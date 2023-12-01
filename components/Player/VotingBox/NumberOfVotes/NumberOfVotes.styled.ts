@@ -13,7 +13,8 @@ export const styles = StyleSheet.create({
         width: 28,
         height: 28,
         padding: 5,
-        borderRadius: 4
+        borderRadius: 4,
+        borderWidth: 2
     },
     text: {
         fontFamily: 'NotoSans-SemiBold',

@@ -3,7 +3,6 @@ import { View } from "react-native"
 import { VotingItem } from "./VotingItem"
 import { styles } from './VotingQueue.styled'
 import type { PlayerType } from "../../types"
-import { usePlayersList } from "../../shared"
 
 type Props = {
     votingList: PlayerType[]
