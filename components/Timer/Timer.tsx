@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from 'react'
 import { View } from 'react-native';
-import { TimerTimeButtonsStack, TimerDisplay } from '../index'
+import { TimerTimeButtonsStack } from './TimerTimeButtonsStack'
+import { TimerDisplay } from './TimerDisplay'
 import { styles } from './Timer.styled'
 
 export const Timer: FC = () => {

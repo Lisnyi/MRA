@@ -1,2 +1,5 @@
 export * from './box'
 export * from './CustomModal'
+export * from './CustomButton'
+export * from './CheckBox'
+export * from './Title'

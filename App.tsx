@@ -1,10 +1,11 @@
 import { useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from "@react-navigation/native";
+import { UserRoutes } from './routes';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { ContextProvider } from './components';
-import { MainScreen } from './screens';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -29,7 +30,9 @@ export default function App() {
     return (
         <ContextProvider>
             <SafeAreaProvider style={styles.container} onLayout={onLayoutRootView}>
-                <MainScreen />
+                <NavigationContainer>
+                    <UserRoutes/>
+                </NavigationContainer>
             </SafeAreaProvider>
         </ContextProvider>
     );

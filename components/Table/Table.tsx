@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { View } from "react-native"
-import { VotingQueue } from "../VotingQueue"
-import { PlayersList } from "../PlayersList"
+import { VotingQueue } from "./VotingQueue"
+import { PlayersList } from "./PlayersList"
+import { ButtonsStack } from "./ButtonsStack"
 import { styles } from './Table.styled'
 import type { PlayerType, VotingInfoType, FoulsOperator } from "../../types"
 
@@ -21,11 +22,13 @@ export const Table = () => {
         }
     })
 
-    const [playersList, setPlayersList] = useState<Array<PlayerType>>(players)
-    const [votingInfo, setVotingInfo] = useState<VotingInfoType>({
+    const defaultVotingInfo = {
         totalOnVote: 0,
         currentNumberOnVote: 0
-    })
+    }
+
+    const [playersList, setPlayersList] = useState<Array<PlayerType>>(players)
+    const [votingInfo, setVotingInfo] = useState<VotingInfoType>(defaultVotingInfo)
     const [maxVotes, setMaxVotes] = useState(0)
 
     const votingQueue = playersList.filter(p => p.voting.onVote).sort((a, b) => {
@@ -150,6 +153,26 @@ export const Table = () => {
         })
     }
 
+    function resetGame() {
+        setPlayersList(players)
+        setVotingInfo(defaultVotingInfo)
+        setMaxVotes(0)
+    }
+
+    function resetVotes() {
+        setPlayersList(prev => {
+            prev.forEach(p => p.voting = {
+                onVote: false,
+                order: null,
+                votes: null,
+                toOut: false
+            })
+            return prev
+        })
+        setMaxVotes(0)
+        setVotingInfo(defaultVotingInfo)
+    }
+
     return (
         <View style={[styles.box]}>
             <VotingQueue votingList={votingQueue} />
@@ -167,7 +190,10 @@ export const Table = () => {
                 changeFouls={changeFouls}
                 changeInGameStatus={changeInGameStatus}
                 changeToOutStatus={changeToOutStatus}
-                maxVotes={maxVotes} />
+                maxVotes={maxVotes}
+                resetGame={resetGame}
+                resetVotes={resetVotes} />
+            {/* <ButtonsStack resetGame={resetGame} resetVotes={resetVotes} /> */}
         </View>
     )
 }
