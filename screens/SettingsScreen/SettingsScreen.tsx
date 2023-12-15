@@ -1,6 +1,7 @@
 import { FC } from 'react'
+import { ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Container, Section, ThemePicker, CustomButton, Title, Block } from "../../components";
+import { Container, Section, ThemePicker, MelodyPicker, CustomButton, Title, Block } from "../../components";
 
 export const SettingsScreen: FC = () => {
 
@@ -9,13 +10,21 @@ export const SettingsScreen: FC = () => {
     return (
         <Container>
             <Section>
-                <Block blockStyles={{marginBottom: 15}}>
-                    <Title textStyles={{ marginBottom: 10 }}>
-                        Choose theme
-                    </Title>
-                    <ThemePicker />
-                </Block>
-                <CustomButton text='Back to menu' onPress={navigation.goBack} />
+                <ScrollView>
+                    <Block>
+                        <Title>
+                            Choose theme
+                        </Title>
+                        <ThemePicker />
+                    </Block>
+                    <Block>
+                        <Title>
+                            Choose timer melody
+                        </Title>
+                        <MelodyPicker />
+                    </Block>
+                    <CustomButton text='Back to menu' onPress={navigation.goBack} />
+                </ScrollView>
             </Section>
         </Container>
     )

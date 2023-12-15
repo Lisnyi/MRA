@@ -23,7 +23,7 @@ export const VotingItem: FC<Props> = ({ playerNumber }) => {
     const numberStyles = {
         marginRight: playerNumber === 10 ? 1 : 0,
         color: theme.light,
-    } 
+    }
 
     return (
         <View style={[styles.box, boxStyles]}>

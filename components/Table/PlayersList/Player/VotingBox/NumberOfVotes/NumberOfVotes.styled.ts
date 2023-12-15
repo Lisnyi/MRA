@@ -12,14 +12,14 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         width: 28,
         height: 28,
-        padding: 5,
+        padding: 2,
         borderRadius: 4,
         borderWidth: 2
     },
     text: {
         fontFamily: 'NotoSans-SemiBold',
-        fontSize: 20,
+        fontSize: 15,
+        lineHeight: 18,
         letterSpacing: 0,
-        lineHeight: 20.5
     }
 });

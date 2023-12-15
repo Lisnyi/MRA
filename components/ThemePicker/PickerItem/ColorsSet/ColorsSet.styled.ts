@@ -5,12 +5,13 @@ export const styles = StyleSheet.create({
         display: "flex",
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     element: {
         width: 20,
         height: 20,
         marginRight: 2,
         borderWidth: 1,
+        borderRadius: 4
     }
 })

@@ -20,7 +20,7 @@ export const NumberButton: FC<Props> = ({ number, onPress }) => {
         color: theme.dark,
         marginRight: numberMargin,
     }
-    
+
     return (
         <Pressable onPress={onPress} style={[styles.button, buttonStyles]}>
             <Text style={[styles.text, textStyles]}>{number}</Text>

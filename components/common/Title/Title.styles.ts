@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
         fontFamily: 'NotoSans-SemiBold',
         fontSize: 20,
         lineHeight: 22,
-        textAlign: 'center'
+        textAlign: 'center',
+        marginBottom: 10
     }
 })

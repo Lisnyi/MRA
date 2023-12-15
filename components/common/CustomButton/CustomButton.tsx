@@ -20,7 +20,7 @@ export const CustomButton: FC<Props> = ({ text, onPress, buttonStyles }) => {
 
     return (
         <Pressable style={[styles.button, buttonColors, buttonStyles]} onPress={onPress}>
-            <Text style={[styles.text, {color: theme.light}]}>
+            <Text style={[styles.text, { color: theme.light }]}>
                 {text}
             </Text>
         </Pressable>

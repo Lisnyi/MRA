@@ -14,7 +14,7 @@ export const MenuItem: FC<Props> = ({ title, onPress, itemStyle }) => {
     const { theme } = useThemeContext()
 
     const linkStyles = {
-        backgroundColor: 'transparent',
+        backgroundColor: `${theme.dark}7F`,
         borderColor: theme.light,
     }
 

@@ -18,7 +18,7 @@ export const NumberOfVotes: FC<Props> = ({ votes, addVotes, leftVotes, disabledV
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const votesOptions: Array<number> = Array.from({ length: leftVotes + 1 + (votes ? votes : 0) })
     const { theme } = useThemeContext()
-    
+
     const buttonStyles = {
         backgroundColor: theme.light,
         borderColor: disabledVoting ? theme.light : theme.accent,

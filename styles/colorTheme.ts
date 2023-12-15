@@ -1,4 +1,10 @@
 export const colorTheme = {
+    classic: {
+        backGround: '#808080',
+        dark: '#000000',
+        light: '#FFFFFF',
+        accent: '#FF0000'
+    },
     dark: {
         backGround: '#2E4F4F',
         dark: '#2C3333',
@@ -16,5 +22,5 @@ export const colorTheme = {
         dark: '#355C7D',
         light: '#E4F9F5',
         accent: '#30E3CA'
-    }
+    },
 }

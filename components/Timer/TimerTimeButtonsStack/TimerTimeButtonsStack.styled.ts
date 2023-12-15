@@ -8,4 +8,4 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         marginBottom: 10
     }
-  });
+});

@@ -12,7 +12,7 @@ type Props = {
 export const ButtonsStack: FC<Props> = ({ resetGame, resetVotes }) => {
 
     const navigation = useNavigation();
-    
+
     return (
         <>
             <View style={[styles.box, { marginBottom: 8 }]}>
@@ -20,7 +20,7 @@ export const ButtonsStack: FC<Props> = ({ resetGame, resetVotes }) => {
                 <CustomButton text='Reset votes' onPress={resetVotes} />
             </View>
             <View style={[styles.box]}>
-                <CustomButton text='Back to menu' onPress={navigation.goBack} />
+                <CustomButton text='Back to menu' onPress={navigation.goBack} buttonStyles={{ width: '100%' }} />
             </View>
         </>
     )

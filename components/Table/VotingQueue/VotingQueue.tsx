@@ -9,13 +9,13 @@ type Props = {
 }
 
 export const VotingQueue: FC<Props> = ({ votingList }) => {
-  
+
     const players = Array.from({ length: (10 - votingList.length) })
 
     return (
         <View style={[styles.box]}>
             {
-                votingList.map(({playerNumber}) =>
+                votingList.map(({ playerNumber }) =>
                     <VotingItem playerNumber={playerNumber} key={playerNumber} />
                 )
             }

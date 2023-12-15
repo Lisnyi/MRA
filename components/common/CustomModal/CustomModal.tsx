@@ -28,7 +28,7 @@ export const CustomModal: FC<PropsWithChildren<Props>> = ({ children, isOpen, on
                 onClose(!isOpen);
             }}>
             <Pressable style={[styles.backdrop]} onPress={() => onClose(!isOpen)}>
-                <Pressable style={[styles.modal, modalColors ,modalStyles]}>
+                <Pressable style={[styles.modal, modalColors, modalStyles]}>
                     {children}
                 </Pressable>
             </Pressable>

@@ -10,4 +10,4 @@ export type Theme = {
     changeTheme: (theme: ThemeState) => void
 }
 
-export type SetType = 'dark' | 'light' | 'neon'
+export type SetType = 'dark' | 'light' | 'neon' | 'classic'

@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { StatusBar } from 'react-native';
+import { StatusBar, ImageBackground } from 'react-native';
 import { useThemeContext } from '../../shared';
 import { Container, Section, MainMenu } from "../../components";
 
@@ -14,7 +14,9 @@ export const MenuScreen: FC = () => {
                 backgroundColor={theme.backGround}
             />
             <Section>
-                <MainMenu />
+                <ImageBackground source={require('../../assets/icon.png')} resizeMode='center' style={{flex: 1}}>
+                    <MainMenu />
+                </ImageBackground>
             </Section>
         </Container>
     )

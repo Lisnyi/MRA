@@ -10,4 +10,4 @@ export const styles = StyleSheet.create({
         borderRadius: 50,
         marginRight: 20
     }
-  });
+});

@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
         textAlign: 'justify',
         fontFamily: 'NotoSans-Regular',
         fontSize: 16,
-        lineHeight: 20,
-        marginBottom: 15,
+        lineHeight: 20
     }
 })

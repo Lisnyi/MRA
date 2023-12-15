@@ -20,7 +20,7 @@ type Props = {
 export const VotingBox: FC<Props> = ({ inGame, voting, disabledVoting, addPlayerToVote, removePlayerFromVote, addVotes, leftVotes, onVotingPlayers }) => {
 
     const { theme } = useThemeContext()
-    const { votes, onVote, order } = voting
+    const { votes, onVote } = voting
 
     useEffect(() => {
         !inGame && removePlayerFromVote()

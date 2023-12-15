@@ -1,8 +1,8 @@
 import { FC } from 'react'
-import { Text, Linking } from 'react-native'
+import { Text, Linking, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
+import { Container, Section, CustomButton, Block, Instruction, Title } from "../../components";
 import { useThemeContext } from '../../shared';
-import { Container, Section, CustomButton, Block } from "../../components";
 import { styles } from './AboutScreen.styled'
 
 export const AboutScreen: FC = () => {
@@ -21,18 +21,25 @@ export const AboutScreen: FC = () => {
     return (
         <Container>
             <Section>
-                <Block blockStyles={{marginBottom: 15}}>
-                    <Text style={[styles.text, textStyle, { textAlign: 'center' }]}>
-                        MRA - mafia referee assistant.
-                    </Text>
-                    <Text style={[styles.text, textStyle]}>
-                        The program was created for people who conducts classic mafia games, but do not like to look for forms, pieces of paper, pens.
-                    </Text>
-                    <Text style={[styles.text, textStyle, {marginBottom: 0}]}>
-                        For any questions, suggestions, please contact Telegram <Text role='link' style={[styles.text, linkStyle]} onPress={() => Linking.openURL('http://t.me/ho_0bbs')}>@ho_0bbs</Text>
-                    </Text>
-                </Block>
-                <CustomButton text='Back to menu' onPress={navigation.goBack} />
+                <ScrollView>
+                    <Block>
+                        <Title >
+                            MRA - mafia referee assistant.
+                        </Title>
+                        <Text style={[styles.text, textStyle]}>
+                            The program was created for people who conducts classic mafia games, but do not like to look for forms, pieces of paper, pens.
+                        </Text>
+                    </Block>
+                    <Block>
+                        <Instruction />
+                    </Block>
+                    <Block>
+                        <Text style={[styles.text, textStyle]}>
+                            For any questions, suggestions, please contact Telegram <Text role='link' style={[styles.text, linkStyle]} onPress={() => Linking.openURL('http://t.me/ho_0bbs')}>@ho_0bbs</Text>
+                        </Text>
+                    </Block>
+                    <CustomButton text='Back to menu' onPress={navigation.goBack} />
+                </ScrollView>
             </Section>
         </Container>
     )

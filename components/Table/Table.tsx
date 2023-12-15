@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { View } from "react-native"
 import { VotingQueue } from "./VotingQueue"
 import { PlayersList } from "./PlayersList"
-import { ButtonsStack } from "./ButtonsStack"
 import { styles } from './Table.styled'
 import type { PlayerType, VotingInfoType, FoulsOperator } from "../../types"
 
@@ -193,7 +192,6 @@ export const Table = () => {
                 maxVotes={maxVotes}
                 resetGame={resetGame}
                 resetVotes={resetVotes} />
-            {/* <ButtonsStack resetGame={resetGame} resetVotes={resetVotes} /> */}
         </View>
     )
 }
