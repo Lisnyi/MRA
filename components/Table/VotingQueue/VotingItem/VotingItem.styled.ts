@@ -6,8 +6,8 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         width: 28,
         height: 28,
+        padding: 2,
         borderWidth: 1,
-        padding: 2
     },
     number: {
         fontFamily: 'NotoSans-SemiBold',

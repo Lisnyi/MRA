@@ -6,5 +6,5 @@ export const styles = StyleSheet.create({
         fontFamily: 'NotoSans-Regular',
         fontSize: 16,
         lineHeight: 20
-    }
+    },
 })

@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-start',
+        paddingVertical: 2
     },
     text: {
         fontFamily: 'NotoSans-SemiBold',

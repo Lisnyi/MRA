@@ -62,7 +62,7 @@ export const PlayersList: FC<Props> = ({
                     changeToOutStatus={changeToOutStatus}
                     maxVotes={maxVotes} />}
             keyExtractor={(p, index) => index.toString()}
-            ListFooterComponent={<ButtonsStack resetGame={resetGame} resetVotes={resetVotes} />}
+            ListFooterComponent={<ButtonsStack playersList={playersList} resetGame={resetGame} resetVotes={resetVotes} />}
         />
     )
 }

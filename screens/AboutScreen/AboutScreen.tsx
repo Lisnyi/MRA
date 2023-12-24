@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Text, Linking, ScrollView } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
-import { Container, Section, CustomButton, Block, Instruction, Title } from "../../components";
+import { Container, Section, CustomButton, Block, Instruction, Title, CloseButton } from "../../components";
 import { useThemeContext } from '../../shared';
 import { styles } from './AboutScreen.styled'
 
@@ -21,6 +21,7 @@ export const AboutScreen: FC = () => {
     return (
         <Container>
             <Section>
+                <CloseButton onPress={navigation.goBack} />
                 <ScrollView>
                     <Block>
                         <Title >
