@@ -19,7 +19,7 @@ type Props = {
 	addToVote: (playerNumber: number) => void,
 	removeFromVote: (playerNumber: number, order: number | null) => void,
 	addVotes: (order: number, vote: number) => void,
-	changeInGameStatus: (playerNumber: number) => void,
+	changeInGameStatus: (playerNumber: number, status: boolean) => void,
 	changeFouls: (playerNumber: number, operator: FoulsOperator) => void,
 	changeToOutStatus: (playerNumber: number, status: boolean) => void,
 }
@@ -35,6 +35,12 @@ export const Player: FC<Props> = ({ player, totalVotes, votingInfo, maxVotes, se
 		backgroundColor: theme.dark,
 		borderColor: voting.toOut ? theme.accent : theme.light
 	}
+
+	useEffect(() => {
+        if (fouls > 3) {
+            changeInGameStatus(playerNumber, false)
+        }
+    }, [fouls]);
 
 	useEffect(() => {
 		if (voting.votes !== null && voting.votes > totalVotes / 2) {
@@ -101,12 +107,11 @@ export const Player: FC<Props> = ({ player, totalVotes, votingInfo, maxVotes, se
 			<OutButton
 				playerNumber={playerNumber}
 				inGame={inGame}
-				changeInGameStatus={() => changeInGameStatus(playerNumber)} />
+				changeInGameStatus={changeInGameStatus} />
 			<FoulsCounter
 				fouls={fouls}
 				inGame={inGame}
-				changeFouls={changePlayerFouls}
-				changeInGameStatus={() => changeInGameStatus(playerNumber)} />
+				changeFouls={changePlayerFouls} />
 			<VotingBox
 				addPlayerToVote={() => addToVote(playerNumber)}
 				removePlayerFromVote={deleteFromVote}

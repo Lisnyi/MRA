@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
-import { View } from "react-native"
+import { View, BackHandler } from "react-native"
+import { useNavigation } from '@react-navigation/native';
 import { VotingQueue } from "./VotingQueue"
 import { PlayersList } from "./PlayersList"
-import { getStorageGame } from '../../localStorage'
+import { getStorageGame, storeGame } from '../../localStorage'
 import { styles } from './Table.styled'
 import type { PlayerType, VotingInfoType, FoulsOperator } from "../../types"
 
 export const Table = () => {
-
+    const navigation = useNavigation();
     const players: Array<PlayerType> = Array.from({ length: 10 }, (v, i) => {
         return {
             inGame: true,
@@ -22,38 +23,66 @@ export const Table = () => {
         }
     })
 
-    
     const defaultVotingInfo = {
         totalOnVote: 0,
         currentNumberOnVote: 0
     }
-    
+
     const [playersList, setPlayersList] = useState<Array<PlayerType>>(players)
-    const [votingInfo, setVotingInfo] = useState<VotingInfoType>(defaultVotingInfo)
     const [maxVotes, setMaxVotes] = useState(0)
-    
+    const [votingInfo, setVotingInfo] = useState<VotingInfoType>(defaultVotingInfo)
+
     const votingQueue = playersList.filter(p => p.voting.onVote).sort((a, b) => {
         if (a.voting.order !== null && b.voting.order !== null) {
             return a.voting.order - b.voting.order
         }
         return 0
     })
-    
+
     const inGamePlayers = playersList.filter(p => p.inGame)
-    
+
     const votesCast = votingQueue.reduce((previousValue, p) => {
         if (p.voting.votes !== null) {
             return previousValue + p.voting.votes;
         }
         return previousValue + 0
     }, 0)
-    
+
     const leftVotes = inGamePlayers.length - votesCast
-    
+
+    function handleBackToMenu() {
+        storeGame(playersList)
+        navigation.goBack();
+        return true;
+    };
+
+    useEffect(() => {
+        BackHandler.addEventListener('hardwareBackPress', handleBackToMenu);
+
+        return () => {
+            BackHandler.removeEventListener('hardwareBackPress', handleBackToMenu);
+        };
+    }, [playersList]);
+
     useEffect(() => {
         const getDefaultPlayersList = async () => {
             const storageGame = await getStorageGame()
-            storageGame && setPlayersList(storageGame)
+            if (storageGame) {
+                setPlayersList(storageGame)
+                const votingQueue = storageGame.filter(p => p.voting.onVote)
+                const withVotes = votingQueue.filter(p => p.voting.votes !== null)
+                const maxVote = withVotes.reduce((acc, p) => {
+                    if (p.voting.votes !== null) {
+                        return acc > p.voting.votes ? acc : p.voting.votes
+                    }
+                    else return acc
+                }, 0)
+                setVotingInfo({
+                    totalOnVote: votingQueue.length,
+                    currentNumberOnVote: withVotes.length + 1
+                })
+                setMaxVotes(maxVote)
+            }
         };
 
         getDefaultPlayersList()
@@ -139,9 +168,9 @@ export const Table = () => {
         }
     }
 
-    function changeInGameStatus(playerNumber: number) {
+    function changeInGameStatus(playerNumber: number, status: boolean) {
         setPlayersList(prev => {
-            prev[playerNumber - 1].inGame = !prev[playerNumber - 1].inGame
+            prev[playerNumber - 1].inGame = status
             return [...prev]
         })
         setMaxVotes(0)

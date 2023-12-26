@@ -8,17 +8,10 @@ import type { FoulsOperator } from "../../../../../types"
 type Props = {
     inGame: boolean,
     fouls: number,
-    changeInGameStatus: () => void,
     changeFouls: (operator: FoulsOperator) => void
 }
 
-export const FoulsCounter: FC<Props> = ({ inGame, fouls, changeFouls, changeInGameStatus }) => {
-
-    useEffect(() => {
-        if (fouls > 3) {
-            changeInGameStatus()
-        }
-    }, [fouls]);
+export const FoulsCounter: FC<Props> = ({ inGame, fouls, changeFouls }) => {
 
     function addFoul() {
         if (fouls < 4) {

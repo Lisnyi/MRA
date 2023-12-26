@@ -13,15 +13,7 @@ export const storeGame = async (game: Array<PlayerType>) => {
 export const getStorageGame = async () => {
     try {
         const jsonGame = await AsyncStorage.getItem('game');
-        return jsonGame !== null ? JSON.parse(jsonGame) : null;
-    } catch (e) {
-        console.log(e)
-    }
-}
-
-export const removeGame = async () => {
-    try {
-        await AsyncStorage.removeItem('game')
+        return jsonGame !== null ? JSON.parse(jsonGame) as Array<PlayerType> : null;
     } catch (e) {
         console.log(e)
     }

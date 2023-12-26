@@ -7,7 +7,7 @@ import { styles } from './OutButton.styled'
 type Props = {
     playerNumber: number,
     inGame: boolean,
-    changeInGameStatus: () => void
+    changeInGameStatus: (playerNumber: number, status: boolean) => void
 }
 
 export const OutButton: FC<Props> = ({ playerNumber, inGame, changeInGameStatus }) => {
@@ -21,7 +21,7 @@ export const OutButton: FC<Props> = ({ playerNumber, inGame, changeInGameStatus 
     }
 
     return (
-        <Pressable onPress={changeInGameStatus} style={[styles.button, buttonColors]}>
+        <Pressable onPress={() => changeInGameStatus(playerNumber, !inGame)} style={[styles.button, buttonColors]}>
             <Icon name={inGame ? 'exit' : 'enter'} style={[styles.icon, iconStyle]} size={30} color={theme.accent} />
             {inGame && <Text style={[styles.number, { color: theme.dark }]}>
                 {playerNumber}
