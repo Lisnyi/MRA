@@ -1,9 +1,9 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, StatusBar } from 'react-native';
 
 export const styles = StyleSheet.create({
     button: {
         position: "absolute",
-        top: 21,
+        top: StatusBar.currentHeight ? 57 - StatusBar.currentHeight : 57,
         right: 3,
         width: 24,
         height: 24,

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useLayoutEffect } from "react"
 import { View, BackHandler } from "react-native"
 import { useNavigation } from '@react-navigation/native';
 import { VotingQueue } from "./VotingQueue"
@@ -64,7 +64,7 @@ export const Table = () => {
         };
     }, [playersList]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const getDefaultPlayersList = async () => {
             const storageGame = await getStorageGame()
             if (storageGame) {
