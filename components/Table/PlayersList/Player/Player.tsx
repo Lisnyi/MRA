@@ -37,10 +37,11 @@ export const Player: FC<Props> = ({ player, totalVotes, votingInfo, maxVotes, se
 	}
 
 	useEffect(() => {
-        if (fouls > 3) {
-            changeInGameStatus(playerNumber, false)
-        }
-    }, [fouls]);
+		if (fouls > 3) {
+			changeInGameStatus(playerNumber, false)
+			deleteFromVote()
+		}
+	}, [fouls]);
 
 	useEffect(() => {
 		if (voting.votes !== null && voting.votes > totalVotes / 2) {
@@ -105,6 +106,7 @@ export const Player: FC<Props> = ({ player, totalVotes, votingInfo, maxVotes, se
 	return (
 		<View style={[styles.box, boxStyles]}>
 			<OutButton
+				removePlayerFromVote={deleteFromVote}
 				playerNumber={playerNumber}
 				inGame={inGame}
 				changeInGameStatus={changeInGameStatus} />

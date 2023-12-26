@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import { View, Pressable } from 'react-native'
 import { Icon } from '../../../../../assets/icons'
 import { NumberOfVotes } from './NumberOfVotes'
@@ -21,10 +21,6 @@ export const VotingBox: FC<Props> = ({ inGame, voting, disabledVoting, addPlayer
 
     const { theme } = useThemeContext()
     const { votes, onVote } = voting
-
-    useEffect(() => {
-        !inGame && removePlayerFromVote()
-    }, [inGame])
 
     return (
         <View style={[styles.box]}>

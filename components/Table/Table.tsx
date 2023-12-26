@@ -69,8 +69,8 @@ export const Table = () => {
             const storageGame = await getStorageGame()
             if (storageGame) {
                 setPlayersList(storageGame)
-                const votingQueue = storageGame.filter(p => p.voting.onVote)
-                const withVotes = votingQueue.filter(p => p.voting.votes !== null)
+                const queue = storageGame.filter(p => p.voting.onVote)
+                const withVotes = queue.filter(p => p.voting.votes !== null)
                 const maxVote = withVotes.reduce((acc, p) => {
                     if (p.voting.votes !== null) {
                         return acc > p.voting.votes ? acc : p.voting.votes
@@ -78,7 +78,7 @@ export const Table = () => {
                     else return acc
                 }, 0)
                 setVotingInfo({
-                    totalOnVote: votingQueue.length,
+                    totalOnVote: queue.length,
                     currentNumberOnVote: withVotes.length + 1
                 })
                 setMaxVotes(maxVote)
@@ -103,7 +103,9 @@ export const Table = () => {
         if (votingInfo.currentNumberOnVote === votingInfo.totalOnVote && votingInfo.totalOnVote > 1) {
             addVotes(votingInfo.currentNumberOnVote, leftVotes)
         }
-    }, [votingInfo.currentNumberOnVote])
+        console.log(`Total on vote ${votingInfo.totalOnVote}`)
+        console.log(`Current Number on vote ${votingInfo.currentNumberOnVote}`)
+    }, [votingInfo.currentNumberOnVote, votingInfo.totalOnVote])
 
     function checkQueueOrder(order: number | null) {
         if (votingQueue.length === order || order === null) {
